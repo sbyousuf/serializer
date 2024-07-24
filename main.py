@@ -37,7 +37,7 @@ if __name__ == "__main__":
     a2=[empty_percentage_shab,empty_percentage_otaghak,empty_percentage_jajiga,empty_percentage_homsa]
     style.use("ggplot")
     plat=np.arange(len(plat)) 
-    plt.figure(figsize=(10,7))
+    plt.figure(figsize=(40,7))
     barwidth=0.2
     plt.bar(plat,a,width=barwidth,color="royalblue",label="less than 10")
     plt.bar(plat+0.2,a2,width=barwidth,color="indigo",label="empty")

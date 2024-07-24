@@ -1,12 +1,12 @@
 import pandas as pd
 from fuzzywuzzy import process
-#rate_median
+#view mean
 # Read the list of cities from a CSV file
 cities_df = pd.read_csv('target_cities.csv')
 target_cities = cities_df['citys'].tolist()  # Assuming the column name is 'city'
 
 # Read the data with prices from another CSV file
-prices_df = pd.read_csv("result\rate_mean\shab.csv")
+prices_df = pd.read_csv("result\otaghak.csv")
 # Define the mapping of old city names to new city names
 city_mapping = {
     'سلمان شهر': 'متل قو',
@@ -47,10 +47,10 @@ normalized_target_cities = [city for city in normalized_target_cities if city is
 filtered_df = prices_df[prices_df['city'].isin(target_cities)]
 
 # Group by city and calculate the average price
-average_prices = filtered_df.groupby('city')['overall_rate'].mean().reset_index()
+average_prices = filtered_df.groupby('city')['int_part'].mean().reset_index()
 
 # Sort the DataFrame by average price in descending order
-average_prices_sorted = average_prices.sort_values(by='overall_rate', ascending=False)
+average_prices_sorted = average_prices.sort_values(by='int_part', ascending=False)
 missing_cities = set(target_cities) - set(filtered_df['city'].unique())
 
 # Print the missing cities
